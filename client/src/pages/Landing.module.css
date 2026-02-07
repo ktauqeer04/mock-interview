@@ -1,0 +1,126 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #1a1a1a;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #e8e8e8;
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  color: #8b8b8b;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.card {
+  background: #262626;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab,
+.tabActive {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #333;
+  color: #8b8b8b;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  background: #404040;
+  color: #e8e8e8;
+}
+
+.tabActive {
+  background: #26a641;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field label {
+  font-size: 0.875rem;
+  color: #8b8b8b;
+}
+
+.field input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #e8e8e8;
+  font-size: 1rem;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #26a641;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.875rem;
+}
+
+.submit {
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #26a641;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.submit:hover:not(:disabled) {
+  background: #2ea043;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.footer {
+  margin-top: 2rem;
+  color: #6b6b6b;
+  font-size: 0.875rem;
+}
