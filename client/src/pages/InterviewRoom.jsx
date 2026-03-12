@@ -3,6 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import Editor from '@monaco-editor/react';
 import styles from './InterviewRoom.module.css';
+import { Toast } from '../components/Toast';
 
 const API_BASE = '/api';
 const SOCKET_URL = window.location.origin;
@@ -66,6 +67,8 @@ export default function InterviewRoom() {
   const isCreatorRef = useRef(false);
   const lastOfferTimestamp = useRef(0);
   const lastAnswerTimestamp = useRef(0);
+  const [toast, setToast] = useState(null);
+
 
   useEffect(() => {
     const load = async () => {
@@ -136,12 +139,15 @@ export default function InterviewRoom() {
     const allPassed = passedCount === question.testCases.length;
     if (allPassed) {
       try {
+        setToast({ message: 'All test cases passed!', type: 'success' });
         await fetch(`${API_BASE}/rooms/${roomId}/result`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, questionId: question.id, solved: true }),
         });
       } catch (_) {}
+    }else {
+      setToast({ message: 'Oops! One or more test cases failed', type: 'error' });
     }
   };
 
@@ -392,6 +398,7 @@ export default function InterviewRoom() {
 
   return (
     <div className={styles.container}>
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
       <header className={styles.header}>
         <h1>{question.id}. {question.title}</h1>
         <span className={styles.timer}>
